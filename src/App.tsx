@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Container mt={2} maxW="8xl" as='main'>
+      <Container mt={2} maxW="100%" as='main' display='grid' alignContent='center' justifyItems='center' gap={2}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/store" element={<Store />} />

@@ -23,7 +23,7 @@ fonts: {
         maxHeight: "100vh",
         background: mode(
           "radial-gradient(circle at 1px 1px, #212121 1px, #13111C 0)",
-          "radial-gradient(circle at 1px 1px, #bbbbb9 1px, #fffff8 0)"
+          "radial-gradient(circle at 1px 1px, #bbbbb9 1px, #D9DEE9 0)"
         )(props),
         backgroundSize: "40px 40px",
         fontSize: "14px",

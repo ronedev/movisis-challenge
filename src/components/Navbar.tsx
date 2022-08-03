@@ -8,25 +8,26 @@ import {
   InputGroup,
   InputLeftElement,
 } from "@chakra-ui/react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import shoppingCartImage from "/images/shopping-cart.png";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const actualPage = useLocation();
+
   return (
     <Box
       bg={"facebook.300"}
       shadow={"xl"}
-      m={"auto"}
       color={"white"}
-      p={4}
       w="100%"
       as="nav"
-      position='sticky'
+      position="sticky"
       top={0}
+      zIndex={100}
     >
-      <Flex justifyContent={"space-between"}>
+      <Flex justifyContent={"space-between"} p={4}>
         <Flex gap={15} alignItems="center">
           <h2>Logo</h2>
           <Flex gap={4}>
@@ -47,23 +48,22 @@ const Navbar = (props: Props) => {
             borderColor="gray.400"
             color="white"
             _hover={{ borderColor: "white" }}
-
           />
-          <Button style={{ position: "relative" }} variant='outline'>
+          <Button style={{ position: "relative" }} variant="outline">
             <Img src={shoppingCartImage} alt="shopping cart" w={10} />
             <Box
               style={{
-                width: '1rem',
-                height: '1rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                width: "1rem",
+                height: "1rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 position: "absolute",
                 top: -5,
                 left: 35,
                 backgroundColor: "red",
                 borderRadius: "50%",
-                fontSize: '.8rem'
+                fontSize: ".8rem",
               }}
             >
               1
@@ -71,6 +71,7 @@ const Navbar = (props: Props) => {
           </Button>
         </InputGroup>
       </Flex>
+      {actualPage.pathname === "/store" && <Flex bg="facebook.500">Skere</Flex>}
     </Box>
   );
 };

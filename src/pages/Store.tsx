@@ -1,5 +1,5 @@
-import { Box, Grid } from "@chakra-ui/react";
-import React from "react";
+import { Box, Container, Grid } from "@chakra-ui/react";
+import CardItem from "../components/CardItem";
 import storeItems from "../data/items.json";
 
 type Props = {};
@@ -7,21 +7,24 @@ type Props = {};
 const Store = (props: Props) => {
   return (
     <>
-      <h1>Store</h1>
-      <Grid
-        w='4xl'
-        templateColumns={[
+      <Container maxW='100%'>
+        <h1>Store</h1>
+        <Grid
+          w="90%"
+          templateColumns={[
             "repeat(1, 1fr)",
             "repeat(2, 1fr)",
             "repeat(3, 1fr)",
             "repeat(4, 1fr)",
-        ]}
-        gap={3}
-      >
-        {storeItems.map((item) => (
-          <Box w="xs">{JSON.stringify(item)}</Box>
-        ))}
-      </Grid>
+          ]}
+          gap="6"
+          justifyItems="center"
+        >
+          {storeItems.map((item) => (
+            <CardItem {...item} />
+          ))}
+        </Grid>
+      </Container>
     </>
   );
 };

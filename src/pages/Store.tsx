@@ -1,4 +1,4 @@
-import { Box, Container, Grid } from "@chakra-ui/react";
+import { Container, Grid } from "@chakra-ui/react";
 import CardItem from "../components/CardItem";
 import storeItems from "../data/items.json";
 
@@ -21,7 +21,7 @@ const Store = (props: Props) => {
           justifyItems="center"
         >
           {storeItems.map((item) => (
-            <CardItem {...item} />
+            <CardItem key={item.id} item={item} />
           ))}
         </Grid>
       </Container>

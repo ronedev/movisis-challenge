@@ -9,12 +9,15 @@ import {
   InputLeftElement,
 } from "@chakra-ui/react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useShoppingCart } from "../context/ShoppingCartContext";
 import shoppingCartImage from "/images/shopping-cart.png";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
   const actualPage = useLocation();
+
+  const { cartQuantity } = useShoppingCart()
 
   return (
     <Box
@@ -51,7 +54,8 @@ const Navbar = (props: Props) => {
           />
           <Button style={{ position: "relative" }} variant="outline">
             <Img src={shoppingCartImage} alt="shopping cart" w={10} />
-            <Box
+            {cartQuantity > 0 && (
+              <Box
               style={{
                 width: "1rem",
                 height: "1rem",
@@ -66,8 +70,9 @@ const Navbar = (props: Props) => {
                 fontSize: ".8rem",
               }}
             >
-              1
+              {cartQuantity}
             </Box>
+            )}
           </Button>
         </InputGroup>
       </Flex>

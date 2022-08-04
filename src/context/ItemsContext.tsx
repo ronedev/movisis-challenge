@@ -16,6 +16,7 @@ type ItemContextTypes = {
     filterByPrice: (from: number, to: number)=> void
     filterByLowerOrHigherPrice: (option: string)=> void
     filterByRecentOrOldestDate: (option: string)=> void
+    filterByName: (name: string)=> void
     items: Item[]
 }
 
@@ -68,5 +69,13 @@ export function ItemsContextProvider({children}: ItemProviderTypes){
                 setItems(allItems)
         }
     }
-    return <ItemsContext.Provider value={{filterByPrice, isFiltering, changeFiltering, items, filterByLowerOrHigherPrice, filterByRecentOrOldestDate}}>{children}</ItemsContext.Provider>
+
+    function filterByName(name: string){
+        if(name){
+            setItems(prevItems => prevItems.filter(item => item.name.toLowerCase().includes(name.toLowerCase())))
+        }else{
+            setItems(allItems)
+        }
+    }
+    return <ItemsContext.Provider value={{filterByPrice, isFiltering, changeFiltering, items, filterByLowerOrHigherPrice,filterByRecentOrOldestDate, filterByName}}>{children}</ItemsContext.Provider>
 }

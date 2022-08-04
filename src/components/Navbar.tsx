@@ -3,24 +3,27 @@ import {
   Box,
   Button,
   Flex,
-  Grid,
-  Heading,
   Img,
   Input,
   InputGroup,
   InputLeftElement,
-  Select,
 } from "@chakra-ui/react";
-import { NavLink, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { useItemsContext } from "../context/ItemsContext";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import shoppingCartImage from "/images/shopping-cart.png";
 
-type Props = {};
-
-const Navbar = (props: Props) => {
-  const actualPage = useLocation();
-
+const Navbar = () => {
   const { cartQuantity } = useShoppingCart();
+  const { filterByName, changeFiltering } = useItemsContext()
+
+  const [searchByName, setSearchByName] = useState<string>('')
+
+  useEffect(()=>{
+    filterByName(searchByName)
+    changeFiltering()
+  }, [searchByName])
 
   return (
     <Box
@@ -54,6 +57,7 @@ const Navbar = (props: Props) => {
             borderColor="gray.400"
             color="white"
             _hover={{ borderColor: "white" }}
+            onChange={(e)=> setSearchByName(e.target.value)}
           />
           <Button style={{ position: "relative" }} variant="outline">
             <Img src={shoppingCartImage} alt="shopping cart" w={10} />

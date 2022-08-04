@@ -3,10 +3,13 @@ import {
   Box,
   Button,
   Flex,
+  Grid,
+  Heading,
   Img,
   Input,
   InputGroup,
   InputLeftElement,
+  Select,
 } from "@chakra-ui/react";
 import { NavLink, useLocation } from "react-router-dom";
 import { useShoppingCart } from "../context/ShoppingCartContext";
@@ -17,7 +20,7 @@ type Props = {};
 const Navbar = (props: Props) => {
   const actualPage = useLocation();
 
-  const { cartQuantity } = useShoppingCart()
+  const { cartQuantity } = useShoppingCart();
 
   return (
     <Box
@@ -56,27 +59,26 @@ const Navbar = (props: Props) => {
             <Img src={shoppingCartImage} alt="shopping cart" w={10} />
             {cartQuantity > 0 && (
               <Box
-              style={{
-                width: "1rem",
-                height: "1rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "absolute",
-                top: -5,
-                left: 35,
-                backgroundColor: "red",
-                borderRadius: "50%",
-                fontSize: ".8rem",
-              }}
-            >
-              {cartQuantity}
-            </Box>
+                style={{
+                  width: "1rem",
+                  height: "1rem",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  position: "absolute",
+                  top: -5,
+                  left: 35,
+                  backgroundColor: "red",
+                  borderRadius: "50%",
+                  fontSize: ".8rem",
+                }}
+              >
+                {cartQuantity}
+              </Box>
             )}
           </Button>
         </InputGroup>
       </Flex>
-      {actualPage.pathname === "/store" && <Flex bg="facebook.500">Skere</Flex>}
     </Box>
   );
 };

@@ -1,4 +1,4 @@
-import { Container } from "@chakra-ui/react";
+import { Box, Container } from "@chakra-ui/react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -8,12 +8,12 @@ function App() {
   return (
     <>
       <Navbar />
-      <Container mt={2} maxW="100%" as='main' display='grid' alignContent='center' justifyItems='center' gap={2}>
+      <Box maxW="100%" as='main' display='grid' alignContent='center' justifyItems='center' gap={2}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/store" element={<Store />} />
         </Routes>
-      </Container>
+      </Box>
     </>
   );
 }

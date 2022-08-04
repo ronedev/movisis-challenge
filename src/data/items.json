@@ -3,30 +3,40 @@
         "id": 1,
         "name": "Nike Air Max",
         "price": 200,
-        "imageUrl": "/images/airmax.webp"
+        "imageUrl": "/images/airmax.webp",
+        "offer":true,
+        "createdAt": "2022-07-17 20:27:47"
     },
     {
         "id": 2,
         "name": "Nike Air Force",
         "price": 100,
-        "imageUrl": "/images/airforce.webp"
+        "imageUrl": "/images/airforce.webp",
+        "offer":false,
+        "createdAt": "2022-06-11 09:28:27"
     },
     {
         "id": 3,
         "name": "Nike Air Max 97",
         "price": 250,
-        "imageUrl": "/images/airmax97.webp"
+        "imageUrl": "/images/airmax97.webp",
+        "offer":false,
+        "createdAt": "2022-07-16 23:32:45"
     },
     {
         "id": 4,
         "name": "Nike Jordan Retro 4",
         "price": 350,
-        "imageUrl": "/images/retro4.webp"
+        "imageUrl": "/images/retro4.webp",
+        "offer":true,
+        "createdAt": "2022-07-10 22:00:37"
     },
     {
         "id": 5,
         "name": "Nike Air Max 270",
         "price": 150,
-        "imageUrl": "/images/airmax270.jpg"
+        "imageUrl": "/images/airmax270.jpg",
+        "offer":true,
+        "createdAt": "2022-07-30 14:59:59"
     }
 ]

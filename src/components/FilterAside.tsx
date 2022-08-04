@@ -15,16 +15,31 @@ type priceRangeType = {
 };
 
 const FilterAside = () => {
-    const {filterByPrice} = useItemsContext()
+  const { filterByPrice, filterByLowerOrHigherPrice, changeFiltering, filterByRecentOrOldestDate } =
+    useItemsContext();
 
   const [priceRange, setPriceRange] = useState<priceRangeType>({
     from: 0,
     to: 0,
   });
 
-  useEffect(()=>{
-    filterByPrice(priceRange.from, priceRange.to)
-  }, [priceRange])
+  const [lowerOrHigherPrice, setLowerOrHigherPrice] = useState<string>("");
+  const [recentOrOldest, setRecentOrOldest] = useState<string>("");
+
+  useEffect(() => {
+    filterByPrice(priceRange.from, priceRange.to);
+    changeFiltering()
+  }, [priceRange]);
+
+  useEffect(() => {
+    filterByLowerOrHigherPrice(lowerOrHigherPrice);
+    changeFiltering()
+  }, [lowerOrHigherPrice]);
+
+  useEffect(() => {
+    filterByRecentOrOldestDate(recentOrOldest);
+    changeFiltering()
+  }, [recentOrOldest]);
 
   return (
     <Grid
@@ -32,7 +47,7 @@ const FilterAside = () => {
       py={2}
       px={6}
       w={{ md: "xs" }}
-      minH='100vh'
+      minH="100vh"
       gap="2rem"
       m={0}
       alignContent="start"
@@ -80,11 +95,16 @@ const FilterAside = () => {
       </Grid>
       <Grid gap={2}>
         <Heading fontSize="lg">Order by</Heading>
-        <Select placeholder="Price" variant="filled" size="md">
+        <Select
+          placeholder="Price"
+          variant="filled"
+          size="md"
+          onChange={(e) => setLowerOrHigherPrice(e.target.value)}
+        >
           <option value="lowerPrice">Lower price</option>
           <option value="higherPrice">Higher price</option>
         </Select>
-        <Select placeholder="Date" variant="filled" size="md">
+        <Select placeholder="Date" variant="filled" size="md" onChange={(e)=> setRecentOrOldest(e.target.value) }>
           <option value="moreRecent">More recent</option>
           <option value="oldest">Oldest</option>
         </Select>

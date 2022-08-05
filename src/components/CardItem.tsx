@@ -8,19 +8,10 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useShoppingCart } from "../context/ShoppingCartContext";
+import { cardItem } from "../interfaces/interfaces";
 
-type CardItemsProps = {
-    item: {
-      id: number
-      name: string
-      price: number
-      imageUrl: string,
-      offer: boolean,
-      createdAt: string
-    }
-};
 
-const CardItem = ({ item }: CardItemsProps) => {
+const CardItem = ({id, name, price, imageUrl, offer, createdAt}: cardItem) => {
   const {
     getItemQuantity,
     increaseCartQuantity,
@@ -28,13 +19,13 @@ const CardItem = ({ item }: CardItemsProps) => {
     removeFromCart,
   } = useShoppingCart();
 
-  const quantity = getItemQuantity(item.id);
+  const quantity = getItemQuantity(id);
 
   return (
     <Box
       p={5}
       shadow="xl"
-      w={{base: 's', md: 'xs'}}
+      w={{ base: "s", md: "xs" }}
       rounded="xl"
       borderWidth="1px"
       as="article"
@@ -46,31 +37,44 @@ const CardItem = ({ item }: CardItemsProps) => {
       color="white"
     >
       <Heading fontSize="xl" textAlign="center">
-        {item.name}
+        {name}
       </Heading>
       <Image
-        src={item.imageUrl}
-        alt={`Descriptive image of the shoes ${item.name}`}
+        src={imageUrl}
+        alt={`Descriptive image of the shoes ${name}`}
         height={200}
         fallbackSrc="https://www.azendportafolio.com/static/img/not-found.png"
       />
-      <Text fontWeight={900} fontSize={20} w="100%" display='flex' alignItems='center' justifyContent='flex-end' gap={3} px={6}>
-        <Text textDecoration='line-through' fontWeight={600} fontSize={15}>{item.offer && `$ ${item.price} `}</Text>
-        ${item.offer ? (item.price - (item.price * .1)) :item.price}
+      <Text
+        fontWeight={900}
+        fontSize={20}
+        w="100%"
+        display="flex"
+        alignItems="center"
+        justifyContent="flex-end"
+        gap={3}
+        px={6}
+      >
+        <Text textDecoration="line-through" fontWeight={600} fontSize={15}>
+          {offer && `$ ${price} `}
+        </Text>
+        ${offer ? price - price * 0.1 : price}
       </Text>
 
       {quantity < 1 ? (
+        //There are no items in the shopping cart
         <Button
           w="full"
           colorScheme="facebook"
           bg="facebook.500"
           textTransform="uppercase"
           color="white"
-          onClick={() => increaseCartQuantity(item.id)}
+          onClick={() => increaseCartQuantity(id)}
         >
           Add to my cart
         </Button>
       ) : (
+        //There are items in the shopping cart
         <Grid>
           <Button
             w="full"
@@ -78,14 +82,16 @@ const CardItem = ({ item }: CardItemsProps) => {
             bg="facebook.500"
             textTransform="uppercase"
             color="white"
-            onClick={()=> removeFromCart(item.id)}
+            onClick={() => removeFromCart(id)}
           >
             Remove from my cart
           </Button>
-          <Flex alignItems='center' justifyContent='space-evenly' mt={3}>
-            <Button onClick={()=>decreaseCartQuantity(item.id)}>-</Button>
-            <Text fontWeight={900} fontSize={13}>{quantity}</Text>
-            <Button onClick={()=>increaseCartQuantity(item.id)}>+</Button>
+          <Flex alignItems="center" justifyContent="space-evenly" mt={3}>
+            <Button onClick={() => decreaseCartQuantity(id)}>-</Button>
+            <Text fontWeight={900} fontSize={13}>
+              {quantity}
+            </Text>
+            <Button onClick={() => increaseCartQuantity(id)}>+</Button>
           </Flex>
         </Grid>
       )}

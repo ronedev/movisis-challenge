@@ -15,23 +15,10 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { useShoppingCart } from "../context/ShoppingCartContext";
+import { cardItemWhitQuantity, modalProps } from "../interfaces/interfaces";
 import { getCartItems } from "../utils/utils";
 
-type Props = {
-  isOpen: boolean;
-  onClose: () => void;
-};
-type Item = {
-  id: number;
-  name: string;
-  price: number;
-  imageUrl: string;
-  offer: boolean;
-  createdAt: string;
-  quantity: number;
-};
-
-const CartModal = ({ isOpen, onClose }: Props) => {
+const CartModal = ({ isOpen, onClose }: modalProps) => {
   const {
     cartItems,
     increaseCartQuantity,
@@ -39,7 +26,7 @@ const CartModal = ({ isOpen, onClose }: Props) => {
     removeFromCart,
   } = useShoppingCart();
 
-  const items: Item[] = getCartItems(cartItems);
+  const items: cardItemWhitQuantity[] = getCartItems(cartItems);
 
   const totalPrice = items.reduce(
     (price, item) => item.price * item.quantity + price,

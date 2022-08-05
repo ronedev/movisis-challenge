@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, Heading, Link } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid, Heading } from "@chakra-ui/react";
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import CardItem from "../components/CardItem";
@@ -74,7 +74,7 @@ const Home = () => {
               cursor="grab"
               {...(idx === itemSelected && handlers)}
             >
-              <CardItem item={item} />
+              <CardItem {...item} />
             </Box>
           ))}
         </Flex>

@@ -1,8 +1,5 @@
-import React, { ReactNode, SetStateAction, useContext, useState } from "react";
-
-type ShoppingCartProviderProps = {
-  children: ReactNode;
-};
+import React, { ReactNode, useContext, useState } from "react";
+import { childrenOfProvider } from "../interfaces/interfaces";
 
 type ShoppingCartContextTypes = {
   openCart: () => void;
@@ -26,7 +23,7 @@ export function useShoppingCart() {
   return useContext(ShoppingCartContext);
 }
 
-export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
+export function ShoppingCartProvider({ children }: childrenOfProvider) {
   const [cartItems, setCartItems] = useState<CartItem[]>([] as CartItem[]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 

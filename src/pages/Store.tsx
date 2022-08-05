@@ -1,18 +1,17 @@
 import {
   Box,
   Container,
-  Flex,
-  Grid,
-  Heading,
+  Grid
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import CardItem from "../components/CardItem";
 import FilterAside from "../components/FilterAside";
 import { useItemsContext } from "../context/ItemsContext";
+import { cardItem } from "../interfaces/interfaces";
 
 const Store = () => {
   const {items, isFiltering} = useItemsContext()
-  const [storeItems, setStoreItems] = useState(items)
+  const [storeItems, setStoreItems] = useState<cardItem[]>(items)
 
   useEffect(()=>{
     setStoreItems(items)
@@ -36,7 +35,7 @@ const Store = () => {
           my={4}
         >
           {storeItems.map((item) => (
-            <CardItem key={item.id} item={item} />
+            <CardItem key={item.id} {...item} />
           ))}
         </Grid>
       </Container>

@@ -1,7 +1,9 @@
 import {
   Box,
   Container,
+  Flex,
   Grid,
+  Heading,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import CardItem from "../components/CardItem";
@@ -19,7 +21,6 @@ const Store = () => {
     <Box display={{md: 'flex'}} w='100%' >
       <FilterAside />
       <Container maxW="100%">
-        <h1>Store</h1>
         <Grid
           templateColumns={
             [
@@ -32,6 +33,7 @@ const Store = () => {
           gap="6"
           justifyItems="center"
           alignContent='center'
+          my={4}
         >
           {storeItems.map((item) => (
             <CardItem key={item.id} item={item} />

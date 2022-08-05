@@ -11,10 +11,12 @@ import { useShoppingCart } from "../context/ShoppingCartContext";
 
 type CardItemsProps = {
     item: {
-        id: number;
-        name: string;
-        price: number;
-        imageUrl: string;
+      id: number
+      name: string
+      price: number
+      imageUrl: string,
+      offer: boolean,
+      createdAt: string
     }
 };
 
@@ -32,7 +34,7 @@ const CardItem = ({ item }: CardItemsProps) => {
     <Box
       p={5}
       shadow="xl"
-      w="xs"
+      w={{base: 's', md: 'xs'}}
       rounded="xl"
       borderWidth="1px"
       as="article"
@@ -52,8 +54,9 @@ const CardItem = ({ item }: CardItemsProps) => {
         height={200}
         fallbackSrc="https://www.azendportafolio.com/static/img/not-found.png"
       />
-      <Text fontWeight={900} fontSize={20} w="full" align="end" px={6}>
-        ${item.price}
+      <Text fontWeight={900} fontSize={20} w="100%" display='flex' alignItems='center' justifyContent='flex-end' gap={3} px={6}>
+        <Text textDecoration='line-through' fontWeight={600} fontSize={15}>{item.offer && `$ ${item.price} `}</Text>
+        ${item.offer ? (item.price - (item.price * .1)) :item.price}
       </Text>
 
       {quantity < 1 ? (

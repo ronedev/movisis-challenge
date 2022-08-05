@@ -44,14 +44,14 @@ const Navbar = () => {
         top={0}
         zIndex={100}
       >
-        <Flex justifyContent={"space-between"} p={4}>
+        <Flex justifyContent={"space-between"} p={4} gap={2}>
           <Flex gap={15} alignItems="center">
-            <a href="/"><Image src="/retrato.png" alt="logo" w={{base: '24', md: '14'}}/></a>
+            <a href="/"><Image src="/retrato.png" alt="logo" w={{base: '20px', md: '14'}}/></a>
             <Flex gap={4}>
-              <Button to="/" as={NavLink} fontSize={20} variant="link">
+              <Button to="/" as={NavLink} fontSize={{base: 15, md: 20}} variant="link">
                 Home
               </Button>
-              <Button to="/store" as={NavLink} fontSize={20} variant="link">
+              <Button to="/store" as={NavLink} fontSize={{base: 15, md: 20}} variant="link">
                 Store
               </Button>
             </Flex>
@@ -62,7 +62,7 @@ const Navbar = () => {
                 <InputLeftElement
                   children={<Search2Icon />}
                   pointerEvents="none"
-                  pt={{base: '5', md: '2.5'}}
+                  pt={{base: '2px', md: '2.5'}}
                 />
                 <Input
                   type="text"

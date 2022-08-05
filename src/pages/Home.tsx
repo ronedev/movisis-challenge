@@ -33,8 +33,8 @@ const Home = () => {
       pb={{base: '40', md: '10'}}
     >
       <Grid>
-        <Flex alignItems="center" justifyContent="space-between" m={4}>
-          <Heading textAlign="center" color="white">
+        <Flex alignItems="center" justifyContent="space-between" m={{base:0, md: 4}} w='100%' flexDirection={{base: 'column', md:'row'}}>
+          <Heading textAlign="center" color="white" textTransform='uppercase' fontSize={20}>
             The best prices and quality
           </Heading>
           <Button onClick={()=> location.href = '/store'} variant="ghost" fontWeight={100}>
@@ -56,10 +56,10 @@ const Home = () => {
               top={['20','10']}
               left={
                 itemSelected === idx - 1
-                  ? "45%"
+                  ? {base: '52%', md:"53%"}
                   : itemSelected === idx + 1
-                  ? "5%"
-                  : "25%"
+                  ? {base: '13%', md:'9%'}
+                  : {base: '29%',md:"33%"}
               }
               opacity={
                 itemSelected === idx
@@ -80,8 +80,8 @@ const Home = () => {
         </Flex>
       </Grid>
       <Flex gap={2}>
-        {items.map(() => (
-          <Box h={3} w={3} bgColor="facebook.100" rounded="50%"></Box>
+        {items.map((item, idx) => (
+          <Box h={3} w={3} bgColor={itemSelected === idx ? 'facebook.700' : "facebook.100"} rounded="50%" cursor='pointer' onClick={()=>setItemSelected(idx)}></Box>
         ))}
       </Flex>
     </Box>

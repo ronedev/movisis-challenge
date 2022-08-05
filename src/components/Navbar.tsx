@@ -132,7 +132,7 @@ const Navbar = () => {
                   </Box>
                 )}
               </Button>
-              <Select minW="6rem" maxW="10rem" onChange={(e)=> changeLang(e.target.value)}>
+              <Select minW="6rem" maxW="10rem" onChange={(e)=> changeLang(e.target.value)} placeholder={actualLang === 'en-US' ? 'Lang' : 'Idioma'}>
                 <option value="en-US">En</option>
                 <option value="pt-BR">Pt</option>
               </Select>

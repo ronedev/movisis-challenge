@@ -57,7 +57,7 @@ const FilterAside = () => {
   return (
     <Grid
       bg="facebook.500"
-      py={2}
+      py={{base: 10, md: 2}}
       px={6}
       w={{ md: "xs" }}
       gap="2rem"
@@ -66,7 +66,7 @@ const FilterAside = () => {
       color="white"
       as="aside"
     >
-      <Box position='sticky' top={20}>
+      <Box position='sticky' top={28}>
         <Grid gap="2px">
           <Heading fontSize="lg" mt={2}>
             Filter by price

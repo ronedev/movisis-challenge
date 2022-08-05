@@ -21,7 +21,6 @@ const Store = () => {
       <Container maxW="100%">
         <h1>Store</h1>
         <Grid
-          w="100%"
           templateColumns={
             [
             "repeat(1, 1fr)",

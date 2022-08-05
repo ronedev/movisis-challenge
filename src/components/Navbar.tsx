@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Flex,
+  Image,
   Img,
   Input,
   InputGroup,
@@ -10,13 +11,14 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useItemsContext } from "../context/ItemsContext";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import CartModal from "./CartModal";
 import shoppingCartImage from "/images/shopping-cart.png";
 
 const Navbar = () => {
+  const actualPage = useLocation();
   const { cartQuantity } = useShoppingCart();
   const { filterByName, changeFiltering } = useItemsContext();
 
@@ -44,7 +46,7 @@ const Navbar = () => {
       >
         <Flex justifyContent={"space-between"} p={4}>
           <Flex gap={15} alignItems="center">
-            <h2>Logo</h2>
+            <a href="/"><Image src="/retrato.png" alt="logo" w={{base: '24', md: '14'}}/></a>
             <Flex gap={4}>
               <Button to="/" as={NavLink} fontSize={20} variant="link">
                 Home
@@ -54,19 +56,32 @@ const Navbar = () => {
               </Button>
             </Flex>
           </Flex>
-          <InputGroup w={"lg"} gap={6}>
-            <InputLeftElement children={<Search2Icon />} pointerEvents="none" />
-            <Input
-              type="text"
-              name="search"
-              placeholder="Search product"
-              borderColor="gray.400"
-              color="white"
-              _hover={{ borderColor: "white" }}
-              onChange={(e) => setSearchByName(e.target.value)}
-            />
-            <Button style={{ position: "relative" }} variant="outline" onClick={onOpen}>
-              <Img src={shoppingCartImage} alt="shopping cart" w={10} />
+          <InputGroup w={"lg"} gap={6} justifyContent='end' alignItems='center'>
+            {actualPage.pathname === "/store" && (
+              <>
+                <InputLeftElement
+                  children={<Search2Icon />}
+                  pointerEvents="none"
+                  pt={{base: '5', md: '2.5'}}
+                />
+                <Input
+                  type="text"
+                  name="search"
+                  placeholder="Search product"
+                  borderColor="gray.400"
+                  color="white"
+                  _hover={{ borderColor: "white" }}
+                  onChange={(e) => setSearchByName(e.target.value)}
+                  pl={8}
+                />
+              </>
+            )}
+            <Button
+              style={{ position: "relative" }}
+              variant="outline"
+              onClick={onOpen}
+            >
+              <Img src={shoppingCartImage} alt="shopping cart" w='2.5rem' />
               {cartQuantity > 0 && (
                 <Box
                   style={{

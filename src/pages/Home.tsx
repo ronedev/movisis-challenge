@@ -1,6 +1,7 @@
-import { Box, Button, Flex, Grid, Heading, Link } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid, Heading } from "@chakra-ui/react";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
+import { NavLink } from "react-router-dom";
 import { useSwipeable } from "react-swipeable";
 import CardItem from "../components/CardItem";
 import { useItemsContext } from "../context/ItemsContext";
@@ -31,16 +32,33 @@ const Home = () => {
       alignContent="space-between"
       justifyItems="center"
       pt={4}
-      pb={{base: '40', md: '10'}}
+      pb={{ base: "40", md: "10" }}
     >
       <Grid>
-        <Flex alignItems="center" justifyContent="space-between" m={{base:0, md: 4}} w='100%' flexDirection={{base: 'column', md:'row'}}>
-          <Heading textAlign="center" color="white" textTransform='uppercase' fontSize={20}>
-            <FormattedMessage id="homeTitle" defaultMessage='The best prices and quality' />
+        <Flex
+          alignItems="center"
+          justifyContent="space-between"
+          m={{ base: 0, md: 4 }}
+          w="100%"
+          flexDirection={{ base: "column", md: "row" }}
+        >
+          <Heading
+            textAlign="center"
+            color="white"
+            textTransform="uppercase"
+            fontSize={20}
+          >
+            <FormattedMessage
+              id="homeTitle"
+              defaultMessage="The best prices and quality"
+            />
           </Heading>
-          <Link href="/store" color='facebook.200' fontWeight={100}>
-          <FormattedMessage id="homeStoreButton" defaultMessage='Visit the store' />
-          </Link>
+          <Button to="/store" variant="ghost" as={NavLink} fontWeight={100}>
+            <FormattedMessage
+              id="homeStoreButton"
+              defaultMessage="Visit the store"
+            />
+          </Button>
         </Flex>
         <Flex
           my={2}
@@ -54,13 +72,13 @@ const Home = () => {
               key={idx}
               id={idx.toString()}
               position="absolute"
-              top={['20','10']}
+              top={["20", "10"]}
               left={
                 itemSelected === idx - 1
-                  ? {base: '36%', md:"53%"}
+                  ? { base: "36%", md: "53%" }
                   : itemSelected === idx + 1
-                  ? {base: '4%', md:'9%'}
-                  : {base: '18%',md:"33%"}
+                  ? { base: "4%", md: "9%" }
+                  : { base: "18%", md: "33%" }
               }
               opacity={
                 itemSelected === idx
@@ -82,7 +100,14 @@ const Home = () => {
       </Grid>
       <Flex gap={2}>
         {items.map((item, idx) => (
-          <Box h={3} w={3} bgColor={itemSelected === idx ? 'facebook.700' : "facebook.100"} rounded="50%" cursor='pointer' onClick={()=>setItemSelected(idx)}></Box>
+          <Box
+            h={3}
+            w={3}
+            bgColor={itemSelected === idx ? "facebook.700" : "facebook.100"}
+            rounded="50%"
+            cursor="pointer"
+            onClick={() => setItemSelected(idx)}
+          ></Box>
         ))}
       </Flex>
     </Box>

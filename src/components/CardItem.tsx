@@ -7,7 +7,6 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 
 type CardItemsProps = {

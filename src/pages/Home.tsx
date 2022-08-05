@@ -38,7 +38,7 @@ const Home = () => {
           <Heading textAlign="center" color="white" textTransform='uppercase' fontSize={20}>
             <FormattedMessage id="homeTitle" defaultMessage='The best prices and quality' />
           </Heading>
-          <Button onClick={()=> location.href = '/store'} variant="ghost" fontWeight={100}>
+          <Button as='a' href="/store" variant="ghost" fontWeight={100}>
           <FormattedMessage id="homeStoreButton" defaultMessage='Visit the store' />
           </Button>
         </Flex>

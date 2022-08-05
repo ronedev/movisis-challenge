@@ -1,5 +1,6 @@
 import { Box, Button, Flex, Grid, Heading } from "@chakra-ui/react";
 import { useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { useSwipeable } from "react-swipeable";
 import CardItem from "../components/CardItem";
 import { useItemsContext } from "../context/ItemsContext";
@@ -35,10 +36,10 @@ const Home = () => {
       <Grid>
         <Flex alignItems="center" justifyContent="space-between" m={{base:0, md: 4}} w='100%' flexDirection={{base: 'column', md:'row'}}>
           <Heading textAlign="center" color="white" textTransform='uppercase' fontSize={20}>
-            The best prices and quality
+            <FormattedMessage id="homeTitle" defaultMessage='The best prices and quality' />
           </Heading>
           <Button onClick={()=> location.href = '/store'} variant="ghost" fontWeight={100}>
-            Visit the store
+          <FormattedMessage id="homeStoreButton" defaultMessage='Visit the store' />
           </Button>
         </Flex>
         <Flex
@@ -46,7 +47,7 @@ const Home = () => {
           alignItems="center"
           justifyContent="center"
           position="relative"
-          w="40rem"
+          maxW="40rem"
         >
           {items.map((item, idx) => (
             <Box
@@ -56,10 +57,10 @@ const Home = () => {
               top={['20','10']}
               left={
                 itemSelected === idx - 1
-                  ? {base: '52%', md:"53%"}
+                  ? {base: '36%', md:"53%"}
                   : itemSelected === idx + 1
-                  ? {base: '13%', md:'9%'}
-                  : {base: '29%',md:"33%"}
+                  ? {base: '4%', md:'9%'}
+                  : {base: '18%',md:"33%"}
               }
               opacity={
                 itemSelected === idx

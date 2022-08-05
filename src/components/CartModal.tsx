@@ -14,6 +14,7 @@ import {
   Text,
   Box,
 } from "@chakra-ui/react";
+import { FormattedMessage } from "react-intl";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { cardItemWhitQuantity, modalProps } from "../interfaces/interfaces";
 import { getCartItems } from "../utils/utils";
@@ -37,7 +38,7 @@ const CartModal = ({ isOpen, onClose }: modalProps) => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader color="white">My cart</ModalHeader>
+        <ModalHeader color="white"> <FormattedMessage id="modalTitle" defaultMessage='My cart' /> </ModalHeader>
         <ModalCloseButton color="white" />
         <ModalBody>
           <Grid gap={2}>
@@ -97,9 +98,11 @@ const CartModal = ({ isOpen, onClose }: modalProps) => {
 
         <ModalFooter>
           <Button variant="ghost" mr={3} onClick={onClose}>
-            Cancel
+            <FormattedMessage id="modalCancelButton" defaultMessage='Cancel' />
           </Button>
-          <Button colorScheme="blue">Pay</Button>
+          <Button colorScheme="blue">
+            <FormattedMessage id="modalPayButton" defaultMessage='Pay' />
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

@@ -1,3 +1,22 @@
 {
-    
+    "navbarHome": "Home",
+    "navbarStore": "Store",
+
+    "homeTitle": "The best prices and quality",
+    "homeStoreButton": "Visit the store",
+
+    "cardItemAddButton": "Add to my cart",
+    "cardItemRemoveButton": "Remove from my cart",
+
+    "modalTitle": "My cart",
+    "modalCancelButton": "Cancel",
+    "modalPayButton": "Pay",
+
+    "filterAsideByPrice": "Filter by price",
+    "fiterAsideByOffered": "Filter by offered",
+    "filterAsideOrderBy": "Order by",
+    "filterAsideOptionLowerPrice": "Lower price",
+    "filterAsideOptionHigherPrice": "Higher price",
+    "filterAsideOptionMoreRecent": "More recent",
+    "filterAsideOptionOldest": "Oldest"
 }

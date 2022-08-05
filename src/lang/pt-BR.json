@@ -1,3 +1,22 @@
 {
+    "navbarHome": "Inicio",
+    "navbarStore": "Armazenar",
     
+    "homeTitle": "Os melhores preços e qualidade",
+    "homeStoreButton": "Visite a loja",
+
+    "cardItemAddButton": "Adicionar ao meu carrinho",
+    "cardItemRemoveButton": "Remover para o meu carrinho",
+
+    "modalTitle": "Meu carrinho",
+    "modalCancelButton": "Cancelar",
+    "modalPayButton": "Pagar",
+
+    "filterAsideByPrice": "Filtrar por preço",
+    "fiterAsideByOffered": "Filtrar por oferecido",
+    "filterAsideOrderBy": "Ordenar por",
+    "filterAsideOptionLowerPrice": "Preço mais baixo",
+    "filterAsideOptionHigherPrice": "Preço mais alto",
+    "filterAsideOptionMoreRecent": "Mais recente",
+    "filterAsideOptionOldest": "Mais antigo"
 }

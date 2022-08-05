@@ -13,6 +13,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { NavLink, useLocation } from "react-router-dom";
 import { useItemsContext } from "../context/ItemsContext";
 import { useLangContext } from "../context/LangContext";
@@ -24,7 +25,7 @@ const Navbar = () => {
   const actualPage = useLocation();
   const { cartQuantity } = useShoppingCart();
   const { filterByName, changeFiltering } = useItemsContext();
-  const { changeLang } = useLangContext()
+  const { changeLang, actualLang } = useLangContext()
 
   const [searchByName, setSearchByName] = useState<string>("");
 
@@ -51,10 +52,10 @@ const Navbar = () => {
         <Flex justifyContent={"space-between"} p={4} gap={2}>
           <Flex gap={15} alignItems="center">
             <a href="/">
-              <Image
+              <img
                 src="/retrato.png"
                 alt="logo"
-                w={{ base: "20px", md: "14" }}
+                style={{maxWidth: '6rem'}}
               />
             </a>
             <Flex gap={4}>
@@ -64,7 +65,7 @@ const Navbar = () => {
                 fontSize={{ base: 15, md: 20 }}
                 variant="link"
               >
-                Home
+                <FormattedMessage id="navbarHome" defaultMessage='Home'/>
               </Button>
               <Button
                 to="/store"
@@ -72,7 +73,7 @@ const Navbar = () => {
                 fontSize={{ base: 15, md: 20 }}
                 variant="link"
               >
-                Store
+                <FormattedMessage id="navbarStore" defaultMessage='Store' />
               </Button>
             </Flex>
           </Flex>
@@ -88,13 +89,13 @@ const Navbar = () => {
                   <InputLeftElement
                     children={<Search2Icon />}
                     pointerEvents="none"
-                    pt={{ base: "2px", md: "2.5" }}
+                    pt={{ base: "2px", md: "40px" }}
                   />
                   <Input
                     type="text"
                     name="search"
                     maxW="15rem"
-                    placeholder="Search product"
+                    placeholder={actualLang === 'en-US' ? "Search product" : "Pesquisar produto"}
                     borderColor="gray.400"
                     color="white"
                     _hover={{ borderColor: "white" }}
@@ -104,13 +105,13 @@ const Navbar = () => {
                 </>
               )}
             </InputGroup>
-            <Box display="flex" justifyContent="space-around" alignItems='center' w="100%" gap={2}>
+            <Box display={{base:'grid', md:'flex'}} justifyContent="space-around" alignItems='center' w="100%" gap={2}>
               <Button
                 style={{ position: "relative" }}
                 variant="outline"
                 onClick={onOpen}
               >
-                <Img src={shoppingCartImage} alt="shopping cart" w="2.5rem" />
+                <img src={shoppingCartImage} alt="shopping cart" style={{maxWidth: '180px', height: '30px'}} />
                 {cartQuantity > 0 && (
                   <Box
                     style={{
@@ -131,7 +132,7 @@ const Navbar = () => {
                   </Box>
                 )}
               </Button>
-              <Select maxW="10rem" onChange={(e)=> changeLang(e.target.value)}>
+              <Select minW="6rem" maxW="10rem" onChange={(e)=> changeLang(e.target.value)}>
                 <option value="en-US">En</option>
                 <option value="pt-BR">Pt</option>
               </Select>

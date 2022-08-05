@@ -7,11 +7,18 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
+import { FormattedMessage } from "react-intl";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { cardItem } from "../interfaces/interfaces";
 
-
-const CardItem = ({id, name, price, imageUrl, offer, createdAt}: cardItem) => {
+const CardItem = ({
+  id,
+  name,
+  price,
+  imageUrl,
+  offer,
+  createdAt,
+}: cardItem) => {
   const {
     getItemQuantity,
     increaseCartQuantity,
@@ -23,7 +30,7 @@ const CardItem = ({id, name, price, imageUrl, offer, createdAt}: cardItem) => {
 
   return (
     <Box
-      p={5}
+      p={{base:1, md: 5}}
       shadow="xl"
       w={{ base: "s", md: "xs" }}
       rounded="xl"
@@ -42,7 +49,7 @@ const CardItem = ({id, name, price, imageUrl, offer, createdAt}: cardItem) => {
       <Image
         src={imageUrl}
         alt={`Descriptive image of the shoes ${name}`}
-        height={200}
+        height={{base: 120, md: 200}}
         fallbackSrc="https://www.azendportafolio.com/static/img/not-found.png"
       />
       <Text
@@ -69,9 +76,13 @@ const CardItem = ({id, name, price, imageUrl, offer, createdAt}: cardItem) => {
           bg="facebook.500"
           textTransform="uppercase"
           color="white"
+          fontSize="sm"
           onClick={() => increaseCartQuantity(id)}
         >
-          Add to my cart
+          <FormattedMessage
+            id="cardItemAddButton"
+            defaultMessage="Add to my cart"
+          />
         </Button>
       ) : (
         //There are items in the shopping cart
@@ -82,9 +93,13 @@ const CardItem = ({id, name, price, imageUrl, offer, createdAt}: cardItem) => {
             bg="facebook.500"
             textTransform="uppercase"
             color="white"
+            fontSize="sm"
             onClick={() => removeFromCart(id)}
           >
-            Remove from my cart
+            <FormattedMessage
+              id="cardItemRemoveButton"
+              defaultMessage="Remove from my cart"
+            />
           </Button>
           <Flex alignItems="center" justifyContent="space-evenly" mt={3}>
             <Button onClick={() => decreaseCartQuantity(id)}>-</Button>

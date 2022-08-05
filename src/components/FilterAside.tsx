@@ -9,7 +9,9 @@ import {
   Select,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { FormattedMessage } from "react-intl";
 import { useItemsContext } from "../context/ItemsContext";
+import { useLangContext } from "../context/LangContext";
 
 type priceRangeType = {
   from: number;
@@ -24,6 +26,7 @@ const FilterAside = () => {
     filterByRecentOrOldestDate,
     filterByOffered,
   } = useItemsContext();
+  const {actualLang} = useLangContext()
 
   const [priceRange, setPriceRange] = useState<priceRangeType>({
     from: 0,
@@ -57,7 +60,7 @@ const FilterAside = () => {
   return (
     <Grid
       bg="facebook.500"
-      py={{base: 10, md: 2}}
+      py={{ base: 10, md: 2 }}
       px={6}
       w={{ md: "xs" }}
       gap="2rem"
@@ -66,10 +69,13 @@ const FilterAside = () => {
       color="white"
       as="aside"
     >
-      <Box position='sticky' top={28}>
+      <Box position="sticky" top={28}>
         <Grid gap="2px">
           <Heading fontSize="lg" mt={2}>
-            Filter by price
+            <FormattedMessage
+              id="filterAsideByPrice"
+              defaultMessage="Filter by price"
+            />
           </Heading>
           <InputGroup>
             <InputLeftElement
@@ -79,7 +85,7 @@ const FilterAside = () => {
               children="$"
             />
             <Input
-              placeholder="Price range from"
+              placeholder={actualLang === 'en-US' ? "Price range from" : "Faixa de preço de"}
               type="number"
               onChange={(e) =>
                 setPriceRange((prev) => {
@@ -96,7 +102,7 @@ const FilterAside = () => {
               children="$"
             />
             <Input
-              placeholder="Price range up to"
+              placeholder={actualLang === 'en-US' ? "Price range up to" : "Faixa de preço até"}
               type="number"
               onChange={(e) =>
                 setPriceRange((prev) => {
@@ -106,28 +112,56 @@ const FilterAside = () => {
             />
           </InputGroup>
           <Checkbox onChange={(e) => setFilterOffered(e.target.checked)} m={4}>
-            Filter by offered
+            <FormattedMessage
+              id="fiterAsideByOffered"
+              defaultMessage="Filter by offered"
+            />
           </Checkbox>
         </Grid>
         <Grid gap={2}>
-          <Heading fontSize="lg">Order by</Heading>
+          <Heading fontSize="lg">
+            <FormattedMessage
+              id="filterAsideOrderBy"
+              defaultMessage="Order by"
+            />
+          </Heading>
           <Select
-            placeholder="Price"
+            placeholder={actualLang === 'en-US' ? "Price" : "Preço"}
             variant="filled"
             size="md"
             onChange={(e) => setLowerOrHigherPrice(e.target.value)}
           >
-            <option value="lowerPrice">Lower price</option>
-            <option value="higherPrice">Higher price</option>
+            <option value="lowerPrice">
+              <FormattedMessage
+                id="filterAsideOptionLowerPrice"
+                defaultMessage="Lower price"
+              />
+            </option>
+            <option value="higherPrice">
+              <FormattedMessage
+                id="filterAsideOptionHigherPrice"
+                defaultMessage="Higher price"
+              />
+            </option>
           </Select>
           <Select
-            placeholder="Date"
+            placeholder={actualLang === 'en-US' ? "Date": "Encontro"}
             variant="filled"
             size="md"
             onChange={(e) => setRecentOrOldest(e.target.value)}
           >
-            <option value="moreRecent">More recent</option>
-            <option value="oldest">Oldest</option>
+            <option value="moreRecent">
+              <FormattedMessage
+                id="filterAsideOptionMoreRecent"
+                defaultMessage="More recent"
+              />
+            </option>
+            <option value="oldest">
+              <FormattedMessage
+                id="filterAsideOptionOldest"
+                defaultMessage="Oldest"
+              />
+            </option>
           </Select>
         </Grid>
       </Box>

@@ -19,11 +19,11 @@ Project made for the Movisis challenge which consists of a shopping cart in reac
 
 ### Autores ✒️
 
-* **Agustín Vera** - *Trabajo Inicial* - [ronedev](https://github.com/ronedev)
+* **Agustín Vera**  - [ronedev](https://github.com/ronedev)
 
-## ¡Gracias por dejarme formar parte de esta experiencia!
+## ¡Thank you for letting me be part of this experience!
 
 
 
 ---
-⌨️ con ❤️ por [ronedev](https://github.com/ronedev) 😊
+⌨️ with ❤️ by [ronedev](https://github.com/ronedev) 😊

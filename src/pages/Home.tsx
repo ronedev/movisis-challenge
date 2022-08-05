@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, Heading } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid, Heading, Link } from "@chakra-ui/react";
 import { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { useSwipeable } from "react-swipeable";
@@ -38,9 +38,9 @@ const Home = () => {
           <Heading textAlign="center" color="white" textTransform='uppercase' fontSize={20}>
             <FormattedMessage id="homeTitle" defaultMessage='The best prices and quality' />
           </Heading>
-          <Button as='a' href="/store" variant="ghost" fontWeight={100}>
+          <Link href="/store" color='facebook.200' fontWeight={100}>
           <FormattedMessage id="homeStoreButton" defaultMessage='Visit the store' />
-          </Button>
+          </Link>
         </Flex>
         <Flex
           my={2}

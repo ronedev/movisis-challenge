@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import allItems from "../data/items.json";
 import { cardItem, childrenOfProvider } from "../interfaces/interfaces";
 

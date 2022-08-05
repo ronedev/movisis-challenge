@@ -1,4 +1,5 @@
-import React, { ReactNode, useContext, useState } from "react";
+import React, {useContext, useState } from "react";
+import { useLocalStorage } from "../hooks/useLocaleStorage";
 import { childrenOfProvider } from "../interfaces/interfaces";
 
 type ShoppingCartContextTypes = {
@@ -24,7 +25,7 @@ export function useShoppingCart() {
 }
 
 export function ShoppingCartProvider({ children }: childrenOfProvider) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([] as CartItem[]);
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>('shopping-cart-movisis', [] as CartItem[]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const openCart = ()=> setIsOpen(true)

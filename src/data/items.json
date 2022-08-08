@@ -38,5 +38,37 @@
         "imageUrl": "/images/airmax270.jpg",
         "offer":true,
         "createdAt": "2022-07-30 14:59:59"
+    },
+    {
+        "id": 6,
+        "name": "Nike Air Jordan 1 Low",
+        "price": 120,
+        "imageUrl": "/images/airjordan1low.webp",
+        "offer":true,
+        "createdAt": "2022-08-08 14:59:59"
+    },
+    {
+        "id": 7,
+        "name": "Nike Air Jordan 1 Mid",
+        "price": 80,
+        "imageUrl": "/images/airjordan1mid.webp",
+        "offer":false,
+        "createdAt": "2022-08-06 14:59:59"
+    },
+    {
+        "id": 8,
+        "name": "Nike Jordan Retro 5",
+        "price": 350,
+        "imageUrl": "/images/retro5.webp",
+        "offer":false,
+        "createdAt": "2022-08-02 14:59:59"
+    },
+    {
+        "id": 9,
+        "name": "Nike Air Jordan 1 Low",
+        "price": 140,
+        "imageUrl": "/images/airjordan1low2.webp",
+        "offer":true,
+        "createdAt": "2022-08-03 14:59:59"
     }
 ]
